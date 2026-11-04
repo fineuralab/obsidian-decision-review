@@ -1,0 +1,8 @@
+.DS_Store
+node_modules/
+dist/
+output/
+.playwright-cli/
+main.js
+__pycache__/
+*.pyc

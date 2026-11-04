@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>决策复盘助手 · 首版交互原型</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="preview-tools">
+    <div><strong>Decision Review</strong><span class="preview-label">首版交互原型</span><span class="preview-description">示例内容保存在此浏览器</span></div>
+    <div class="preview-actions">
+      <button id="theme-toggle" type="button" aria-pressed="false">深色</button>
+      <button id="width-toggle" type="button" aria-pressed="false">窄窗口</button>
+      <button id="empty-toggle" type="button" aria-pressed="false">空状态</button>
+      <button id="reset-demo" type="button">重置示例</button>
+    </div>
+  </div>
+  <div id="storage-notice" class="storage-notice" role="status" hidden></div>
+  <div class="preview-stage">
+    <div class="plugin-shell" id="plugin-shell">
+      <header class="app-header">
+        <div class="brand"><span id="brand-icon" aria-hidden="true"></span><div><h1>决策复盘</h1><p>记下当时的理由，回来看看结果。</p></div></div>
+        <button id="new-decision" class="button primary" type="button"><span aria-hidden="true">＋</span> 记录决定</button>
+      </header>
+      <nav class="main-nav" aria-label="决策复盘导航">
+        <button type="button" data-view="due" class="nav-button active" aria-current="page">待回访 <span id="due-count">3</span></button>
+        <button type="button" data-view="all" class="nav-button">全部决定 <span id="all-count">6</span></button>
+        <button type="button" data-view="lessons" class="nav-button">经验笔记 <span id="lesson-count">2</span></button>
+        <span class="today-label" id="today-label"></span>
+      </nav>
+      <div class="workspace" id="workspace">
+        <aside class="decision-sidebar" id="decision-sidebar" aria-label="决定列表">
+          <div class="sidebar-top"><h2 id="list-heading">待回访</h2><button type="button" class="icon-button sidebar-close" id="close-sidebar" aria-label="关闭决定列表">×</button></div>
+          <label class="search-box"><span id="search-icon" aria-hidden="true"></span><span class="sr-only">搜索决定与回访</span><input id="search" type="search" placeholder="搜索决定与回访…" autocomplete="off"></label>
+          <label id="status-filter-label" class="status-filter" hidden><span class="sr-only">决定状态</span><select id="status-filter"><option value="all">全部状态</option><option value="open">观察中</option><option value="closed">已结束</option><option value="unscheduled">未安排回访</option></select></label>
+          <div class="decision-list" id="decision-list"></div>
+          <div class="sidebar-footer">回访记录会一直保留</div>
+        </aside>
+        <main class="detail-pane" id="detail-pane" tabindex="-1" aria-label="决定详情"></main>
+      </div>
+    </div>
+  </div>
+  <div id="toast" role="status" class="toast" hidden></div>
+  <dialog id="editor-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+    <form id="editor-form" novalidate>
+      <header class="dialog-header"><div><h2 id="dialog-title"></h2><p id="dialog-description"></p></div><button type="button" class="icon-button" id="dialog-close" aria-label="关闭表单">×</button></header>
+      <div class="dialog-body"><div id="form-error" class="form-error" role="alert" hidden></div><div id="dialog-fields"></div></div>
+      <footer class="dialog-footer"><span class="shortcut-hint">⌘ / Ctrl + Enter 保存</span><button type="button" class="button" id="dialog-cancel">取消</button><button type="submit" class="button primary" id="dialog-save">保存决定</button></footer>
+    </form>
+  </dialog>
+  <dialog id="confirm-dialog" class="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-description">
+    <h2 id="confirm-title"></h2><p id="confirm-description"></p>
+    <div class="confirm-actions"><button type="button" class="button" id="confirm-cancel">继续编辑</button><button type="button" class="button primary" id="confirm-accept">放弃修改</button></div>
+  </dialog>
+</body>
+</html>

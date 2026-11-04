@@ -1,0 +1,10 @@
+{
+  "id": "decision-review",
+  "name": "Decision Review",
+  "version": "0.1.6",
+  "minAppVersion": "1.8.7",
+  "description": "Record your reasons, revisit outcomes, and keep lessons for next time. 记录理由，回访结果，留下经验。",
+  "author": "fineuralab",
+  "authorUrl": "https://github.com/fineuralab",
+  "isDesktopOnly": true
+}
